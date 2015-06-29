@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TimeReversalHandlerPlayer : MonoBehaviour
+public class TimeReversalHandlerNotPlayer : MonoBehaviour
 {
 		PhysicsManipulation physMan;
 		private Stack transformStack = new Stack ();
