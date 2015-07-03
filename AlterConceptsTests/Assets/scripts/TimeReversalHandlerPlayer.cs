@@ -11,7 +11,8 @@ public class TimeReversalHandlerPlayer : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				physMan = GetComponent<PhysicsManipulation> ();
+				GameObject gmHold = GameObject.Find ("GameManager");
+				physMan = gmHold.GetComponent<PhysicsManipulation> ();
 		}
 	
 		// Update is called once per frame

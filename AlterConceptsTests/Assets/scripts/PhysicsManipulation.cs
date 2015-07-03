@@ -29,16 +29,11 @@ public class PhysicsManipulation : MonoBehaviour
 
 		public Stack physicsStack = new Stack ();
 		private int stackCount = 0;
-		private bool gravityManipulationSelected = false;
-		private bool frictionManipulationSelected = false;
-		private bool timeManipulationSelected = false;
-		private bool erasedFriction = false;
+		private bool alterModeEnabled = false;
+		private bool noFriction = false;
 		private bool reversedGravity = false;
 		private bool reversedTime = false;
-		private float gravityScaleNormal = 3f;
-		private float gravityScaleReversed = -3f;
-		//private float frictionScaleNormal = 1f;
-		//private float frictionScaleOff = 0f;
+		
 
 		// Use this for initialization
 		void Start ()
@@ -49,58 +44,45 @@ public class PhysicsManipulation : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (Input.GetKeyDown (KeyCode.G)) {
-						gravityManipulationSelected = !gravityManipulationSelected;
-						frictionManipulationSelected = false;
-						timeManipulationSelected = false;
-						reversedTime = false;
-				} else if (Input.GetKeyDown (KeyCode.F)) {
-						frictionManipulationSelected = !frictionManipulationSelected;
-						gravityManipulationSelected = false;
-						timeManipulationSelected = false;
-						reversedTime = false;
-				} else if (Input.GetKeyDown (KeyCode.T)) {
-						timeManipulationSelected = !timeManipulationSelected;
-						frictionManipulationSelected = false;
-						gravityManipulationSelected = false;
-						reversedTime = false;
-				} else {
-						if (gravityManipulationSelected) {
-								if (Input.GetKeyDown (KeyCode.LeftAlt)) {
-										reversedGravity = !reversedGravity;
-										reversedTime = false;
-								}
-						} else if (timeManipulationSelected) {
-								if (Input.GetKey (KeyCode.LeftAlt)) {
-										reversedTime = true;
-								} else {
-										reversedTime = false;
-								}
-						} else if (frictionManipulationSelected) {
-								if (Input.GetKeyDown (KeyCode.LeftAlt)) {
-										erasedFriction = !erasedFriction;
-										reversedTime = false;
-								}
+
+				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt)) {
+						alterModeEnabled = !alterModeEnabled;
+						if (!alterModeEnabled) {
+								turnPhysManOff ();
+
+						}
+				}
+
+				if (alterModeEnabled) {
+						if (Input.GetKeyDown (KeyCode.G)) {
+								reversedGravity = ! reversedGravity;
+								reversedTime = false;
+						} else if (Input.GetKeyDown (KeyCode.F)) {
+								noFriction = !noFriction;
+								reversedTime = false;
+						} else if (Input.GetKeyDown (KeyCode.T)) {
+								reversedTime = true;
+						} else if (Input.GetKeyUp (KeyCode.T)) {
+								reversedTime = false;
 						}
 				}
 		}
 
 		public void SetPhysics (GameObject gameObject)
 		{
-				if (reversedGravity) {
-						gameObject.rigidbody2D.gravityScale = gravityScaleReversed;
-				} else {
-						gameObject.rigidbody2D.gravityScale = gravityScaleNormal;
-				}
-
 				if (reversedTime) {
 						gameObject.rigidbody2D.gravityScale = 0;
-				} 
+						gameObject.rigidbody2D.velocity = Utils.ZeroVelocity;
+				} else if (reversedGravity) {
+						gameObject.rigidbody2D.gravityScale = Utils.GravityScale * Utils.NegativeOneFloat;
+				} else {
+						gameObject.rigidbody2D.gravityScale = Utils.GravityScale;
+				}
 		}
 
 		public void PushPhysics ()
 		{
-				PhysicsInfo physicsInfoHold = new PhysicsInfo (reversedGravity, erasedFriction);
+				PhysicsInfo physicsInfoHold = new PhysicsInfo (reversedGravity, noFriction);
 				physicsStack.Push (physicsInfoHold);
 				stackCount++;
 		}
@@ -109,7 +91,7 @@ public class PhysicsManipulation : MonoBehaviour
 		{
 				PhysicsInfo physicsInfoHold = (PhysicsInfo)physicsStack.Pop ();
 				reversedGravity = physicsInfoHold.GetGravitySetting ();
-				erasedFriction = physicsInfoHold.GetFrictionSetting ();
+				noFriction = physicsInfoHold.GetFrictionSetting ();
 		}
 
 		public bool GetIsTimeReversalOn ()
@@ -120,5 +102,17 @@ public class PhysicsManipulation : MonoBehaviour
 		public bool GetIsGravityReversalOn ()
 		{
 				return reversedGravity;
+		}
+
+		public bool GetIsNoFrictonOn ()
+		{
+				return noFriction;
+		}
+    
+		private void turnPhysManOff ()
+		{
+				noFriction = false;
+				reversedTime = false;
+				reversedGravity = false;
 		}
 }

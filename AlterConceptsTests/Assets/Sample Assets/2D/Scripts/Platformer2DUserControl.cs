@@ -5,12 +5,13 @@ public class Platformer2DUserControl : MonoBehaviour
 {
 		private PlatformerCharacter2D character;
 		private bool jump;
-		PhysicsManipulation PhysMan; 
+		PhysicsManipulation physMan; 
 
 
 		void Awake ()
 		{
-				PhysMan = this.gameObject.AddComponent<PhysicsManipulation> ();
+				GameObject gmHold = GameObject.Find ("GameManager");
+				physMan = gmHold.GetComponent<PhysicsManipulation> ();
 				character = GetComponent<PlatformerCharacter2D> ();
 		}
 
@@ -23,7 +24,7 @@ public class Platformer2DUserControl : MonoBehaviour
 				if (Input.GetButtonDown ("Jump"))
 						jump = true;
 #endif
-				PhysMan.SetPhysics (this.gameObject);
+				physMan.SetPhysics (this.gameObject);
 				
 		}
 

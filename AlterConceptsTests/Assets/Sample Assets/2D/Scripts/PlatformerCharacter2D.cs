@@ -30,8 +30,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 		float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 		Animator anim;										// Reference to the player's animator component.
 		bool upright = true;								// Is the sprite being drawn upright
-		float jumpFlip = 1.0f;								//Flip jump when player is on the ceiling
-		PhysicsManipulation physMan;
+		float jumpFlip = 1.0f;								// Flip jump when player is on the ceiling
+		PhysicsManipulation physMan;						// Stores the PhysicsManipulation script
+		Vector2 startingPos;							    // Stores the starting position of the player	
+
+		void Start ()
+		{
+				startingPos = gameObject.rigidbody2D.position;
+		}
 
 		void Awake ()
 		{
@@ -39,7 +45,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				groundCheck = transform.Find ("GroundCheck");
 				ceilingCheck = transform.Find ("CeilingCheck");
 				anim = GetComponent<Animator> ();
-				physMan = GetComponent<PhysicsManipulation> ();
+				GameObject gmHold = GameObject.Find ("GameManager");
+				physMan = gmHold.GetComponent<PhysicsManipulation> ();
 		}
 
 
@@ -80,11 +87,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 						rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
 			
 						// If the input is moving the player right and the player is facing left...
-						if (move > 0 && !facingRight)
+						if (move < 0 && !facingRight)
 				// ... flip the player.
 								Flip ();
 			// Otherwise if the input is moving the player left and the player is facing right...
-						else if (move < 0 && facingRight)
+						else if (move > 0 && facingRight)
 				// ... flip the player.
 								Flip ();
 
@@ -127,6 +134,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Vector3 theScale = transform.localScale;
 				theScale.y *= -1;
 				transform.localScale = theScale;
+		}
+
+		//Returns player starting position
+		public Vector2 getStartingPos ()
+		{
+				return startingPos;
 		}
 
 }
