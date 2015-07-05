@@ -3,16 +3,43 @@ using System.Collections;
 
 public class KeyController : MonoBehaviour
 {
-		Vector2 startingPos = new Vector2 ();
+		SlideAction slideAction;
+		bool followPlayer = false;
+		GameObject playerHold;
 		// Use this for initialization
 		void Start ()
 		{
-				startingPos = gameObject.rigidbody2D.position;
+				slideAction = gameObject.GetComponent<SlideAction> ();
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-	
+				if (followPlayer) {
+						FollowPlayer ();
+				}
+		}
+
+		void OnTriggerEnter2D (Collider2D other)
+		{
+				if (other.tag == "Player") {
+						slideAction.DisableSlideAction ();
+						followPlayer = true;
+						playerHold = GameObject.Find ("Player");
+						gameObject.collider2D.enabled = false;
+				}
+		}
+
+		void FollowPlayer ()
+		{
+				//GameObject playerHold = GameObject.Find ("Player");
+				gameObject.transform.position = playerHold.transform.position;
+				PlatformerCharacter2D pC2D = playerHold.GetComponent<PlatformerCharacter2D> ();
+				if (pC2D.IsFacingRight ()) {
+						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
+				} else {
+						gameObject.transform.position = new Vector2 (gameObject.transform.position.x - Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
+						;
+				}
 		}
 }

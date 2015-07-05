@@ -22,9 +22,7 @@ public class SpikesLevelOne : MonoBehaviour
 						
 				} else
 				if (allowRealDeath) {*/
-				getStartingPos = other.gameObject.GetComponent<PlatformerCharacter2D> ();
-				other.rigidbody2D.position = getStartingPos.getStartingPos ();
-				other.rigidbody2D.velocity = Utils.ZeroVelocity;
+				Application.LoadLevel (Application.loadedLevelName);
 				//}
 		}
 }

@@ -32,11 +32,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		bool upright = true;								// Is the sprite being drawn upright
 		float jumpFlip = 1.0f;								// Flip jump when player is on the ceiling
 		PhysicsManipulation physMan;						// Stores the PhysicsManipulation script
-		Vector2 startingPos;							    // Stores the starting position of the player	
 
 		void Start ()
 		{
-				startingPos = gameObject.rigidbody2D.position;
 		}
 
 		void Awake ()
@@ -136,10 +134,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 				transform.localScale = theScale;
 		}
 
-		//Returns player starting position
-		public Vector2 getStartingPos ()
+		public bool IsFacingRight ()
 		{
-				return startingPos;
+				return facingRight;
 		}
 
 }
