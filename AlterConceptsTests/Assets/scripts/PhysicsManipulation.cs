@@ -47,10 +47,6 @@ public class PhysicsManipulation : MonoBehaviour
 
 				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt)) {
 						alterModeEnabled = !alterModeEnabled;
-						if (!alterModeEnabled) {
-								turnPhysManOff ();
-
-						}
 				}
 
 				if (alterModeEnabled) {
@@ -107,12 +103,5 @@ public class PhysicsManipulation : MonoBehaviour
 		public bool GetIsNoFrictonOn ()
 		{
 				return noFriction;
-		}
-    
-		private void turnPhysManOff ()
-		{
-				noFriction = false;
-				reversedTime = false;
-				reversedGravity = false;
 		}
 }

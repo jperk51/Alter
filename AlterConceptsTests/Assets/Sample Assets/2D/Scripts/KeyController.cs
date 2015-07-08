@@ -24,6 +24,9 @@ public class KeyController : MonoBehaviour
 		{
 				if (other.tag == "Player") {
 						slideAction.DisableSlideAction ();
+						ThrowControllerKey throwController = gameObject.AddComponent<ThrowControllerKey> ();
+						ThrowAimRotationController throwAimRot = gameObject.GetComponent<ThrowAimRotationController> ();
+						throwAimRot.keyHasBeenGrabbed ();
 						followPlayer = true;
 						playerHold = GameObject.Find ("Player");
 						gameObject.collider2D.enabled = false;
@@ -39,7 +42,6 @@ public class KeyController : MonoBehaviour
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				} else {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x - Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
-						;
 				}
 		}
 }
