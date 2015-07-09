@@ -6,11 +6,12 @@ public class FadeAction : MonoBehaviour
 
 		private bool lessOpaque = true;
 		private float opacity = 100f;
+		Color colorHold;
 	
 		// Use this for initialization
 		void Start ()
 		{
-				Color colorHold = gameObject.renderer.material.color;
+				colorHold = gameObject.renderer.material.color;
 				gameObject.renderer.material.color = new Color (colorHold.r, colorHold.g, colorHold.b, opacity / Utils.OneHundredFloat);
 		}
 		// Update is called once per frame
@@ -22,8 +23,7 @@ public class FadeAction : MonoBehaviour
 						opacity += Utils.AmountToFadePerFrame;
 						lessOpaque = isOneHundredPercentOpaque ();
 				}
-		
-				Color colorHold = gameObject.renderer.material.color;
+
 				gameObject.renderer.material.color = new Color (colorHold.r, colorHold.g, colorHold.b, opacity / Utils.OneHundredFloat);
 		}
 	
@@ -31,4 +31,10 @@ public class FadeAction : MonoBehaviour
 		{
 				return opacity == Utils.OneHundredFloat;
 		}
+
+		void OnDestroy ()
+		{
+				gameObject.renderer.material.color = new Color (colorHold.r, colorHold.g, colorHold.b, 1f);
+		}
+
 }

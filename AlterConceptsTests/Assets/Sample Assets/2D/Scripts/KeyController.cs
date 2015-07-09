@@ -16,6 +16,8 @@ public class KeyController : MonoBehaviour
 		void Update ()
 		{
 				if (followPlayer) {
+						Destroy (gameObject.GetComponent<FadeAction> ());
+						
 						FollowPlayer ();
 				}
 		}
@@ -25,7 +27,7 @@ public class KeyController : MonoBehaviour
 				if (other.tag == "Player") {
 						slideAction.DisableSlideAction ();
 						ThrowControllerKey throwController = gameObject.AddComponent<ThrowControllerKey> ();
-						ThrowAimRotationController throwAimRot = gameObject.GetComponent<ThrowAimRotationController> ();
+						ThrowAimRotationController throwAimRot = GameObject.Find ("ThrowAimAssist").GetComponent<ThrowAimRotationController> ();
 						throwAimRot.keyHasBeenGrabbed ();
 						followPlayer = true;
 						playerHold = GameObject.Find ("Player");
@@ -39,9 +41,9 @@ public class KeyController : MonoBehaviour
 				gameObject.transform.position = playerHold.transform.position;
 				PlatformerCharacter2D pC2D = playerHold.GetComponent<PlatformerCharacter2D> ();
 				if (pC2D.IsFacingRight ()) {
-						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
-				} else {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x - Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
+				} else {
+						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				}
 		}
 }
