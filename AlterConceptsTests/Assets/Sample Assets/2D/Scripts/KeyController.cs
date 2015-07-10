@@ -17,7 +17,6 @@ public class KeyController : MonoBehaviour
 		{
 				if (followPlayer) {
 						Destroy (gameObject.GetComponent<FadeAction> ());
-						
 						FollowPlayer ();
 				}
 		}
@@ -45,5 +44,10 @@ public class KeyController : MonoBehaviour
 				} else {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				}
+		}
+
+		public void throwKey ()
+		{
+				followPlayer = false;
 		}
 }

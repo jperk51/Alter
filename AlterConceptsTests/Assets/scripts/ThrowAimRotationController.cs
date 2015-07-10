@@ -40,4 +40,9 @@ public class ThrowAimRotationController : MonoBehaviour
 				float rot = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
 				gameObject.transform.rotation = Quaternion.Euler (0f, 0f, rot);
 		} 
+
+		public void throwKey ()
+		{
+				playerHasTheKey = false;
+		}
 }
