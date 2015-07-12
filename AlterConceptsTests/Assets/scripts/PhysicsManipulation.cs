@@ -66,13 +66,18 @@ public class PhysicsManipulation : MonoBehaviour
 
 		public void SetPhysics (GameObject gameObject)
 		{
+				float keyGavityShift = 1f;
+				if (gameObject.tag == "Key") {
+						keyGavityShift = 0.5f;
+				}
+
 				if (reversedTime) {
 						gameObject.rigidbody2D.gravityScale = 0;
 						gameObject.rigidbody2D.velocity = Utils.ZeroVelocity;
 				} else if (reversedGravity) {
-						gameObject.rigidbody2D.gravityScale = Utils.GravityScale * Utils.NegativeOneFloat;
+						gameObject.rigidbody2D.gravityScale = Utils.GravityScale * Utils.NegativeOneFloat * keyGavityShift;
 				} else {
-						gameObject.rigidbody2D.gravityScale = Utils.GravityScale;
+						gameObject.rigidbody2D.gravityScale = Utils.GravityScale * keyGavityShift;
 				}
 		}
 

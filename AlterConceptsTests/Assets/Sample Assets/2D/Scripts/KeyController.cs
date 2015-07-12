@@ -6,10 +6,14 @@ public class KeyController : MonoBehaviour
 		SlideAction slideAction;
 		bool followPlayer = false;
 		GameObject playerHold;
+		PhysicsManipulation physMan;
+		bool PlayerFacingRight = false;
 		// Use this for initialization
 		void Start ()
 		{
 				slideAction = gameObject.GetComponent<SlideAction> ();
+				GameObject gmHold = GameObject.Find ("GameManager");
+				physMan = gmHold.GetComponent<PhysicsManipulation> ();
 		}
 	
 		// Update is called once per frame
@@ -19,13 +23,15 @@ public class KeyController : MonoBehaviour
 						Destroy (gameObject.GetComponent<FadeAction> ());
 						FollowPlayer ();
 				}
+
+				physMan.SetPhysics (gameObject);
+
 		}
 
-		void OnTriggerEnter2D (Collider2D other)
+		void OnCollisionEnter2D (Collision2D other)
 		{
-				if (other.tag == "Player") {
+				if (other.collider.tag == "Player") {
 						slideAction.DisableSlideAction ();
-						ThrowControllerKey throwController = gameObject.AddComponent<ThrowControllerKey> ();
 						ThrowAimRotationController throwAimRot = GameObject.Find ("ThrowAimAssist").GetComponent<ThrowAimRotationController> ();
 						throwAimRot.keyHasBeenGrabbed ();
 						followPlayer = true;
@@ -44,10 +50,23 @@ public class KeyController : MonoBehaviour
 				} else {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				}
+				PlayerFacingRight = pC2D.IsFacingRight ();
 		}
 
-		public void throwKey ()
+
+		public void ThrowKey ()
 		{
 				followPlayer = false;
+				gameObject.collider2D.enabled = true;
+		}
+
+		public bool PlayerHasKey ()
+		{
+				return followPlayer;
+		}
+
+		public bool IsPlayerFacingRight ()
+		{
+				return PlayerFacingRight;
 		}
 }

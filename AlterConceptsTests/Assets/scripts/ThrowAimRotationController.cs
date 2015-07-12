@@ -38,11 +38,31 @@ public class ThrowAimRotationController : MonoBehaviour
 				Vector3 difference = mousePos - key.transform.position;
 
 				float rot = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+				rot = LimitRotationBasedOnPlayerFacingDirection (rot);
 				gameObject.transform.rotation = Quaternion.Euler (0f, 0f, rot);
 		} 
 
 		public void throwKey ()
 		{
 				playerHasTheKey = false;
+		}
+
+		public float getAngleOfAim ()
+		{
+				return gameObject.transform.localRotation.eulerAngles.z;
+		}
+
+		private float LimitRotationBasedOnPlayerFacingDirection (float rot)
+		{
+				if (gameObject.GetComponentInParent<KeyController> ().IsPlayerFacingRight ()) {
+						if (rot > 80f && rot <= 180f) {
+								rot = 80f;
+						} else if (rot > 180 && rot < 280f) {
+								rot = 280f;
+						} 
+						return rot;
+				} else {
+						return Mathf.Clamp (rot, 100, 260);
+				}
 		}
 }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TimeReversalHandlerNotPlayer : MonoBehaviour
+public class TimeReversalHandlerKey : MonoBehaviour
 {
+
 		PhysicsManipulation physMan;
 		private Stack transformStack = new Stack ();
 		private int stackCount = 0;
