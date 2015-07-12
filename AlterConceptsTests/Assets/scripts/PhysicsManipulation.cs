@@ -28,17 +28,20 @@ public class PhysicsManipulation : MonoBehaviour
 
 
 		public Stack physicsStack = new Stack ();
+		BackgroundMusicManager music;
 		private int stackCount = 0;
 		private bool alterModeEnabled = false;
 		private bool noFriction = false;
 		private bool reversedGravity = false;
 		private bool reversedTime = false;
+
 		
 
 		// Use this for initialization
 		void Start ()
 		{
-					
+				music = gameObject.GetComponent<BackgroundMusicManager> ();
+				music.TurnOnForwardClip ();
 		}
 	
 		// Update is called once per frame
@@ -58,8 +61,10 @@ public class PhysicsManipulation : MonoBehaviour
 								reversedTime = false;
 						} else if (Input.GetKeyDown (KeyCode.T)) {
 								reversedTime = true;
+								music.TurnOnBackwardClip ();
 						} else if (Input.GetKeyUp (KeyCode.T)) {
 								reversedTime = false;
+								music.TurnOnForwardClip ();
 						}
 				}
 		}

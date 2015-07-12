@@ -16,9 +16,15 @@ public class ThrowAction : MonoBehaviour
 				ThrowAimRotationController throwAimRot = GameObject.Find ("ThrowAimAssist").GetComponent<ThrowAimRotationController> ();
 				KeyController keyController = gameObject.GetComponent<KeyController> ();
 
+<<<<<<< HEAD
 				if (Input.GetMouseButtonDown (0) && keyController.PlayerHasKey ()) {
 						SetThrowPropertiesForKey (throwAimRot);
 						keyController.ThrowKey ();
+=======
+				if (Input.GetMouseButtonDown (1)) {
+						gameObject.rigidbody2D.isKinematic = false;
+						keyController.throwKey ();
+>>>>>>> origin/master
 						throwAimRot.throwKey ();
 				}
 		}
