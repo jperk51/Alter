@@ -13,11 +13,7 @@ public class BackgroundMusicManager : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				sounds = GetComponents<AudioSource> ();
-				forward = sounds [0];
-				backward = sounds [1];
-				physMan = gameObject.GetComponent<PhysicsManipulation> ();
-				lengthOfClip = forward.clip.length;
+				
 		}
 	
 		// Update is called once per frame
@@ -28,6 +24,11 @@ public class BackgroundMusicManager : MonoBehaviour
 
 		public void TurnOnBackwardClip ()
 		{
+				sounds = GetComponents<AudioSource> ();
+				forward = sounds [0];
+				backward = sounds [1];
+				physMan = gameObject.GetComponent<PhysicsManipulation> ();
+				lengthOfClip = forward.clip.length;
 				float currentTimeForward = forward.time;
 				float getTimeToStartBackwardClip = lengthOfClip - currentTimeForward;
 				backward.time = getTimeToStartBackwardClip;
@@ -37,6 +38,11 @@ public class BackgroundMusicManager : MonoBehaviour
 
 		public void TurnOnForwardClip ()
 		{
+				sounds = GetComponents<AudioSource> ();
+				forward = sounds [0];
+				backward = sounds [1];
+				physMan = gameObject.GetComponent<PhysicsManipulation> ();
+				lengthOfClip = forward.clip.length;
 				float currectTimeBackward = backward.time;
 				float getTimeToStartForwardClip = lengthOfClip - currectTimeBackward;
 				forward.time = getTimeToStartForwardClip;

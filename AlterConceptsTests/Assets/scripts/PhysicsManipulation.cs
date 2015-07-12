@@ -29,6 +29,7 @@ public class PhysicsManipulation : MonoBehaviour
 
 		public Stack physicsStack = new Stack ();
 		BackgroundMusicManager music;
+		EnergyBarHandler energyBar;
 		private int stackCount = 0;
 		private bool alterModeEnabled = false;
 		private bool noFriction = false;
@@ -47,8 +48,8 @@ public class PhysicsManipulation : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-
-				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt)) {
+				energyBar = GameObject.Find ("EnergyBar").GetComponent<EnergyBarHandler> ();
+				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt) || energyBar.NoEnergyLeft ()) {
 						alterModeEnabled = !alterModeEnabled;
 				}
 
@@ -113,5 +114,10 @@ public class PhysicsManipulation : MonoBehaviour
 		public bool GetIsNoFrictonOn ()
 		{
 				return noFriction;
+		}
+
+		public bool GetIsInAlterState ()
+		{
+				return alterModeEnabled;
 		}
 }

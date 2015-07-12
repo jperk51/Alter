@@ -7,8 +7,9 @@ public static class Utils
 		public static int FramesPerPop = 30;								//Number of frames between each time snapshot pop during time reversal
 		public static int MaxStackCount = 1000;								//Max number of time snapshots
 		public static int DelayCounterTigger = 10;							//Delay for real death after tutorial on time reversal
-		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal		
+		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal
 
+		public static float AmountToSlidePerFrame = 0.018f;					//Amount for Energy Bar to slide per frame
 		public static float GravityScale = 3f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one
 		public static float OneHundredFloat = 100f;							//Float 100
@@ -26,4 +27,19 @@ public static class Utils
 		public static Color Blue = new Color32 (39, 64, 139, 1);			//RGB for Blue Background
 		public static Color Green = new Color32 (58, 130, 58, 1);			//RGB for Green Background
 		public static Color Violet = new Color32 (118, 82, 140, 1);			//RGB for Violet Background
+
+		public static string BarToShrinkNext (GameObject currentBar)
+		{
+				string currentBarName = currentBar.name;
+			
+				if (currentBarName == "BlueEnergyBar") {
+						return "OrangeEnergyBar";
+				} else if (currentBarName == "OrangeEnergyBar") {
+						return "PinkEnergyBar";
+				} else if (currentBarName == "PinkEnergyBar") {
+						return "GreenEnergyBar";
+				} else {
+						return "NoEnergy";
+				}
+		}
 }
