@@ -34,20 +34,20 @@ public class EnergyBarHandler : MonoBehaviour
 
 		void moveBarDownAndShowText ()
 		{
-				if (energyLevel != 0) {
+				if (energyLevel >= 0) {
 						Vector3 posHold = gameObject.transform.position;
-						gameObject.transform.position = new Vector3 (posHold.x, posHold.y - Utils.AmountToSlidePerFrame, posHold.z);
-						energyLevel--;
+						gameObject.transform.position = new Vector3 (posHold.x, posHold.y - Utils.AmountToSlidePerFrame / 2.0f, posHold.z);
+						energyLevel -= 0.5f;
 						showText ();
 				}
 		}
 
 		void moveBarUpAndHideText ()
 		{
-				if (energyLevel != 240) {
+				if (energyLevel <= 240) {
 						Vector3 posHold = gameObject.transform.position;
-						gameObject.transform.position = new Vector3 (posHold.x, posHold.y + Utils.AmountToSlidePerFrame / 2.0f, posHold.z);
-						energyLevel += 0.5f;
+						gameObject.transform.position = new Vector3 (posHold.x, posHold.y + Utils.AmountToSlidePerFrame, posHold.z);
+						energyLevel++;
 						showText ();
 				}
 		}

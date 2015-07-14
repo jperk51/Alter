@@ -38,7 +38,7 @@ public class ThrowAimRotationController : MonoBehaviour
 				Vector3 difference = mousePos - key.transform.position;
 
 				float rot = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-				rot = LimitRotationBasedOnPlayerFacingDirection (rot);
+				//rot = LimitRotationBasedOnPlayerFacingDirection (rot);
 				gameObject.transform.rotation = Quaternion.Euler (0f, 0f, rot);
 		} 
 
