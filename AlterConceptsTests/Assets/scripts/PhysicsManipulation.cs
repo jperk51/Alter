@@ -41,7 +41,7 @@ public class PhysicsManipulation : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				music = gameObject.GetComponent<BackgroundMusicManager> ();
+				music = GameObject.Find ("MusicHolder").GetComponent<BackgroundMusicManager> ();
 				music.TurnOnForwardClip ();
 		}
 	
@@ -51,6 +51,9 @@ public class PhysicsManipulation : MonoBehaviour
 				energyBar = GameObject.Find ("EnergyBar").GetComponent<EnergyBarHandler> ();
 				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt) || energyBar.NoEnergyLeft ()) {
 						alterModeEnabled = !alterModeEnabled;
+						if (energyBar.NoEnergyLeft ()) {
+								TurnTimeReversalOff ();
+						}					
 				}
 
 				if (alterModeEnabled) {
@@ -64,10 +67,9 @@ public class PhysicsManipulation : MonoBehaviour
 								reversedTime = true;
 								music.TurnOnBackwardClip ();
 						} else if (Input.GetKeyUp (KeyCode.T)) {
-								reversedTime = false;
-								music.TurnOnForwardClip ();
+								TurnTimeReversalOff ();
 						}
-				}
+				} 
 		}
 
 		public void SetPhysics (GameObject gameObject)
@@ -119,5 +121,11 @@ public class PhysicsManipulation : MonoBehaviour
 		public bool GetIsInAlterState ()
 		{
 				return alterModeEnabled;
+		}
+
+		private void TurnTimeReversalOff ()
+		{
+				reversedTime = false;
+				music.TurnOnForwardClip ();
 		}
 }
