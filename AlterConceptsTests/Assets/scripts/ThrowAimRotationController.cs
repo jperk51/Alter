@@ -38,7 +38,9 @@ public class ThrowAimRotationController : MonoBehaviour
 				Vector3 difference = mousePos - key.transform.position;
 
 				float rot = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-				//rot = LimitRotationBasedOnPlayerFacingDirection (rot);
+				rot = LimitRotationBasedOnPlayerFacingDirection (rot);
+				//Debug.Log (rot);
+				lastAngle = rot;
 				gameObject.transform.rotation = Quaternion.Euler (0f, 0f, rot);
 		} 
 
@@ -49,20 +51,32 @@ public class ThrowAimRotationController : MonoBehaviour
 
 		public float getAngleOfAim ()
 		{
-				return gameObject.transform.localRotation.eulerAngles.z;
+				return lastAngle;
 		}
 
 		private float LimitRotationBasedOnPlayerFacingDirection (float rot)
 		{
 				if (gameObject.GetComponentInParent<KeyController> ().IsPlayerFacingRight ()) {
-						if (rot > 80f && rot <= 180f) {
-								rot = 80f;
-						} else if (rot > 180 && rot < 280f) {
-								rot = 280f;
-						} 
-						return rot;
+						rot = IsRotBetweenAngles (rot, -180f, -85f, true, -1f);
+						rot = IsRotBetweenAngles (rot, 85f, 180f, true, 1f);
 				} else {
-						return Mathf.Clamp (rot, 100, 260);
+						rot = IsRotBetweenAngles (rot, -95f, -1f, false, -1f);
+						rot = IsRotBetweenAngles (rot, 0f, 95f, false, 1f);
 				}
+				return rot;
+		}
+
+		private float IsRotBetweenAngles (float rot, float minAngle, float maxAngle, bool isPlayerFacingRight, float multiplier)
+		{
+				
+				int rotInt = Mathf.RoundToInt (rot);
+				if (rotInt <= maxAngle && rotInt >= minAngle) {
+						if (isPlayerFacingRight) {
+								rot = Mathf.Min (Mathf.Abs (minAngle), Mathf.Abs (maxAngle)) * multiplier;
+						} else {
+								rot = Mathf.Max (Mathf.Abs (minAngle), Mathf.Abs (maxAngle)) * multiplier;
+						}
+				}
+				return rot;
 		}
 }

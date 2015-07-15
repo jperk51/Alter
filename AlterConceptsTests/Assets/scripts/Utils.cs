@@ -16,7 +16,7 @@ public static class Utils
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
 		public static float DistaceToMove = 0.5f;							//Amount of total movement for key slide
 		public static float AmountToMovePerFrame = 0.01f;					//Amount of slide per frame
-		public static float KeyShiftWhenCarried = 0.35f;					//Distance for keys position to be shifted when being carried
+		public static float KeyShiftWhenCarried = 0.3f;					//Distance for keys position to be shifted when being carried
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity

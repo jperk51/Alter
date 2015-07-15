@@ -2,7 +2,7 @@
 
 public class PlatformerCharacter2D : MonoBehaviour
 {
-		bool facingRight = true;							// For determining which way the player is currently facing.
+		bool facingRight = false;							// For determining which way the player is currently facing.
 		[SerializeField]
 		float
 				maxSpeed = 10f;				// The fastest the player can travel in the x axis.
@@ -85,11 +85,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 						rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
 			
 						// If the input is moving the player right and the player is facing left...
-						if (move < 0 && !facingRight)
+						if (move < 0 && facingRight)
 				// ... flip the player.
 								Flip ();
 			// Otherwise if the input is moving the player left and the player is facing right...
-						else if (move > 0 && facingRight)
+						else if (move > 0 && !facingRight)
 				// ... flip the player.
 								Flip ();
 

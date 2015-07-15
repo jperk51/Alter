@@ -37,6 +37,14 @@ public class KeyController : MonoBehaviour
 						followPlayer = true;
 						playerHold = GameObject.Find ("Player");
 						gameObject.collider2D.enabled = false;
+						gameObject.rigidbody2D.isKinematic = true;
+				}
+		}
+
+		void OnCollisionExit2D (Collision2D other)
+		{
+				if (other.collider.tag == "Player") {
+						gameObject.rigidbody2D.isKinematic = false;
 				}
 		}
 
@@ -46,9 +54,9 @@ public class KeyController : MonoBehaviour
 				gameObject.transform.position = playerHold.transform.position;
 				PlatformerCharacter2D pC2D = playerHold.GetComponent<PlatformerCharacter2D> ();
 				if (pC2D.IsFacingRight ()) {
-						gameObject.transform.position = new Vector2 (gameObject.transform.position.x - Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
-				} else {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
+				} else {
+						gameObject.transform.position = new Vector2 (gameObject.transform.position.x - Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				}
 				PlayerFacingRight = pC2D.IsFacingRight ();
 		}

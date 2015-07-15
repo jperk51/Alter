@@ -27,7 +27,7 @@ public class ThrowAction : MonoBehaviour
 				gameObject.rigidbody2D.isKinematic = false;
 				gameObject.collider2D.isTrigger = false;
 				float angle = throwAimRot.getAngleOfAim ();
-				Debug.Log (angle);
+				//Debug.Log (angle);
 				float cos = Mathf.Cos (angle * Mathf.Deg2Rad);
 				float sin = Mathf.Sin (angle * Mathf.Deg2Rad);
 				Vector2 angledForce = new Vector2 (Utils.ThrowForce * cos, Utils.ThrowForce * sin);
