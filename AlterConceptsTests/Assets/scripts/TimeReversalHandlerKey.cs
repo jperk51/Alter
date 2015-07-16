@@ -4,52 +4,56 @@ using System.Collections;
 public class TimeReversalHandlerKey : MonoBehaviour
 {
 
-		PhysicsManipulation physMan;
-		private Stack transformStack = new Stack ();
+		KeyController keyCon;
+		private Stack keyInfoStack = new Stack ();
 		private int stackCount = 0;
 		private int frameNumberSinceLastPush = 0;
 		private int frameNumberSinceLastPop = 0;
+
+		private class KeyReversalInfo
+		{
+		
+				public KeyReversalInfo (bool playerHasKeyIn, Vector3 keyPosIn)
+				{
+						keyPos = keyPosIn;
+						followPlayer = playerHasKeyIn;
+				}
+		
+				public Vector3 GetStoredKeyPos ()
+				{
+						return keyPos;
+				}
+		
+				public bool GetDoesPlayerHaveKey ()
+				{
+						return followPlayer;
+				}
+				Vector3 keyPos;
+				bool followPlayer;
+		
+		}
 		// Use this for initialization
 		void Start ()
 		{
-				GameObject gmHold = GameObject.Find ("GameManager");
-				physMan = gmHold.GetComponent<PhysicsManipulation> ();
+				keyCon = gameObject.GetComponent<KeyController> ();
 		}
 	
 		// Update is called once per frame
 		void Update ()
-		{
-				if (frameNumberSinceLastPush % Utils.FramesPerPush == 0) {
-						if (transformStack.Count < Utils.MaxStackCount && WasThereAChange ()) {
-								transformStack.Push (gameObject.transform.position);
-								stackCount++;
-						}
-						frameNumberSinceLastPush = 1;
-				}
-				frameNumberSinceLastPush++;
-		
-				if (physMan.GetIsTimeReversalOn ()) {
-						if (transformStack.Count > 0 && frameNumberSinceLastPop % Utils.FramesPerPop == 0) {
-								gameObject.transform.position = (Vector3)transformStack.Pop ();
-								stackCount--;
-								frameNumberSinceLastPush = 1;
-								frameNumberSinceLastPop = 1;
-						} else {
-								frameNumberSinceLastPush = 1;
-								frameNumberSinceLastPop++;
-						}
-				}
+		{		
 		}
-	
-		bool WasThereAChange ()
+
+
+		public void PushKeyInfo ()
 		{
-				if (transformStack.Count > 0) {
-						Vector3 posToCheck = (Vector3)transformStack.Pop ();
-						bool change = (posToCheck != gameObject.transform.position);
-						transformStack.Push (posToCheck);
-						return change;
-				}
-		
-				return true;
+				KeyReversalInfo keyInfoHold = new KeyReversalInfo (keyCon.PlayerHasKey (), gameObject.transform.position);
+				keyInfoStack.Push (keyInfoHold);
+		}
+
+		public void PopKeyInfo ()
+		{
+				KeyReversalInfo keyInfoHold = (KeyReversalInfo)keyInfoStack.Pop ();
+				gameObject.transform.position = keyInfoHold.GetStoredKeyPos ();
+				keyCon.SetPlayerHasKey (keyInfoHold.GetDoesPlayerHaveKey ());
 		}
 }

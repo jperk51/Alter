@@ -6,6 +6,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		GUIText[] levelCompleteTexts = new GUIText[3];
 		Color clear;
 		Color visible;
+		bool levelComplete = false;
 		// Use this for initialization
 		void Start ()
 		{
@@ -22,7 +23,13 @@ public class LevelCompleteHandler : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-	
+				if (levelComplete) {
+						if (Input.GetKeyDown (KeyCode.R)) {
+								Application.LoadLevel (Application.loadedLevelName);
+						} else if (Input.GetKeyDown (KeyCode.Q)) {
+								Application.Quit ();
+						}
+				}
 		}
 
 		public void LevelComplete ()
@@ -30,12 +37,6 @@ public class LevelCompleteHandler : MonoBehaviour
 				levelCompleteTexts [0].color = visible;
 				levelCompleteTexts [1].color = visible;
 				levelCompleteTexts [2].color = visible;
-				while (true) {
-						if (Input.GetKeyDown (KeyCode.R)) {
-								Application.LoadLevel (Application.loadedLevelName);
-						} else if (Input.GetKeyDown (KeyCode.Q)) {
-								Application.Quit ();
-						}
-				}
+				levelComplete = true;
 		}
 }

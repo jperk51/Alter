@@ -51,7 +51,7 @@ public class PhysicsManipulation : MonoBehaviour
 				energyBar = GameObject.Find ("EnergyBar").GetComponent<EnergyBarHandler> ();
 				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt) || energyBar.NoEnergyLeft ()) {
 						alterModeEnabled = !alterModeEnabled;
-						if (energyBar.NoEnergyLeft ()) {
+						if (energyBar.NoEnergyLeft () && reversedTime) {
 								TurnTimeReversalOff ();
 						}					
 				}

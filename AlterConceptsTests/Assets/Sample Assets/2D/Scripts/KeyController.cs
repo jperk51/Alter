@@ -77,4 +77,9 @@ public class KeyController : MonoBehaviour
 		{
 				return PlayerFacingRight;
 		}
+
+		public void SetPlayerHasKey (bool valueForFollowPlayer)
+		{
+				followPlayer = valueForFollowPlayer;
+		}
 }

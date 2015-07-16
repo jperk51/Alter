@@ -4,6 +4,7 @@ using System.Collections;
 public class TimeReversalHandlerPlayer : MonoBehaviour
 {
 		PhysicsManipulation physMan;
+		TimeReversalHandlerKey timeKey;
 		private Stack transformStack = new Stack ();
 		private int stackCount = 0;
 		private int frameNumberSinceLastPush = 0;
@@ -13,6 +14,7 @@ public class TimeReversalHandlerPlayer : MonoBehaviour
 		{
 				GameObject gmHold = GameObject.Find ("GameManager");
 				physMan = gmHold.GetComponent<PhysicsManipulation> ();
+				timeKey = GameObject.Find ("Key").GetComponent<TimeReversalHandlerKey> ();
 		}
 	
 		// Update is called once per frame
@@ -22,6 +24,7 @@ public class TimeReversalHandlerPlayer : MonoBehaviour
 						if (transformStack.Count < Utils.MaxStackCount && WasThereAChange ()) {
 								transformStack.Push (gameObject.transform.position);
 								physMan.PushPhysics ();
+								timeKey.PushKeyInfo ();
 								stackCount++;
 						}
 						frameNumberSinceLastPush = 1;
@@ -32,6 +35,7 @@ public class TimeReversalHandlerPlayer : MonoBehaviour
 						if (transformStack.Count > 0 && frameNumberSinceLastPop % Utils.FramesPerPop == 0) {
 								gameObject.transform.position = (Vector3)transformStack.Pop ();
 								physMan.PopAndSetPhysics ();
+								timeKey.PopKeyInfo ();
 								stackCount--;
 								frameNumberSinceLastPush = 1;
 								frameNumberSinceLastPop = 1;
