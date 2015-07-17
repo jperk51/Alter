@@ -5,12 +5,14 @@ public class BackGroundChangeBasedOnPhysics : MonoBehaviour
 {
 		Color originalBackgroundColor = new Color ();
 		PhysicsManipulation physMan;
+		SpriteRenderer box;
 		// Use this for initialization
 		void Start ()
 		{
 				GameObject gmHold = GameObject.Find ("GameManager");
 				physMan = gmHold.GetComponent<PhysicsManipulation> ();
-				originalBackgroundColor = camera.backgroundColor;
+				box = gameObject.GetComponent<SpriteRenderer> ();
+				originalBackgroundColor = box.color;
 		}
 	
 		// Update is called once per frame
@@ -22,20 +24,19 @@ public class BackGroundChangeBasedOnPhysics : MonoBehaviour
 				
 				//Gravity: Blue :: Friction: Red :: Time: Green :: Gravity+Friction: Violet
 				if (whichPhysicsMansAreOn [2]) {
-						//All on
-						camera.backgroundColor = Utils.Green;
+						box.color = Utils.Green;
 				} else if (whichPhysicsMansAreOn [0] && whichPhysicsMansAreOn [1]) {
 						//G and F
-						camera.backgroundColor = Utils.Violet;
+						box.color = Utils.Violet;
 				} else if (whichPhysicsMansAreOn [0]) {
 						//G
-						camera.backgroundColor = Utils.Blue;
+						box.color = Utils.Blue;
 				} else if (whichPhysicsMansAreOn [1]) {
 						//F
-						camera.backgroundColor = Utils.Red;
+						box.color = Utils.Red;
 				} else {
 						//None
-						camera.backgroundColor = originalBackgroundColor;
+						box.color = originalBackgroundColor;
 				}
 		}
 

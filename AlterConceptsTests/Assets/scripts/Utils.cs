@@ -16,30 +16,16 @@ public static class Utils
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
 		public static float DistaceToMove = 0.5f;							//Amount of total movement for key slide
 		public static float AmountToMovePerFrame = 0.01f;					//Amount of slide per frame
-		public static float KeyShiftWhenCarried = 0.3f;					//Distance for keys position to be shifted when being carried
+		public static float KeyShiftWhenCarried = 0.3f;						//Distance for keys position to be shifted when being carried
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 
 		public static float ThrowForce = 500f;								//Force to throw key with
 
-		public static Color Red = new Color32 (150, 34, 34, 1);				//RGB for Red Background
-		public static Color Blue = new Color32 (39, 64, 139, 1);			//RGB for Blue Background
-		public static Color Green = new Color32 (58, 130, 58, 1);			//RGB for Green Background
-		public static Color Violet = new Color32 (118, 82, 140, 1);			//RGB for Violet Background
-
-		public static string BarToShrinkNext (GameObject currentBar)
-		{
-				string currentBarName = currentBar.name;
-			
-				if (currentBarName == "BlueEnergyBar") {
-						return "OrangeEnergyBar";
-				} else if (currentBarName == "OrangeEnergyBar") {
-						return "PinkEnergyBar";
-				} else if (currentBarName == "PinkEnergyBar") {
-						return "GreenEnergyBar";
-				} else {
-						return "NoEnergy";
-				}
-		}
+		public static Color Red = new Color32 (150, 34, 34, 100);			//RGB for Red Background
+		public static Color Blue = new Color32 (39, 64, 139, 100);			//RGB for Blue Background
+		public static Color Green = new Color32 (58, 130, 58, 100);			//RGB for Green Background
+		public static Color Violet = new Color32 (118, 82, 140, 100);		//RGB for Violet Background
+	
 }
