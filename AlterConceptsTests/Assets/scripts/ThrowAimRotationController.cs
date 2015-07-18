@@ -6,16 +6,19 @@ public class ThrowAimRotationController : MonoBehaviour
 		bool playerHasTheKey = false;
 		Color aimColor;
 		float lastAngle = 0f;
+		KeyController keyCon;
 		// Use this for initialization
 		void Start ()
 		{
 				aimColor = gameObject.renderer.material.color;
 				gameObject.renderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, 0f);
+				keyCon = gameObject.GetComponentInParent<KeyController> ();
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				playerHasTheKey = keyCon.PlayerHasKey ();
 				if (playerHasTheKey) {
 						GameObject key = GameObject.Find ("Key");
 						gameObject.renderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, 0.8f);
@@ -23,11 +26,6 @@ public class ThrowAimRotationController : MonoBehaviour
 				} else {
 						gameObject.renderer.material.color = new Color (aimColor.r, aimColor.g, aimColor.b, 0f);
 				}
-		}
-
-		public void keyHasBeenGrabbed ()
-		{
-				playerHasTheKey = true;
 		}
 
 		private void SetThrowAimToPointAtMousePosition (GameObject key)

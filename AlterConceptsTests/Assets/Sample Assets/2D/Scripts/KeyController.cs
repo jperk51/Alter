@@ -33,7 +33,6 @@ public class KeyController : MonoBehaviour
 				if (other.collider.tag == "Player") {
 						slideAction.DisableSlideAction ();
 						ThrowAimRotationController throwAimRot = GameObject.Find ("ThrowAimAssist").GetComponent<ThrowAimRotationController> ();
-						throwAimRot.keyHasBeenGrabbed ();
 						followPlayer = true;
 						playerHold = GameObject.Find ("Player");
 						gameObject.collider2D.enabled = false;
