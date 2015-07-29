@@ -18,10 +18,11 @@ public static class Utils
 		public static float AmountToMovePerFrame = 0.01f;					//Amount of slide per frame
 		public static float KeyShiftWhenCarried = 0.3f;						//Distance for keys position to be shifted when being carried
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
+		public static float FrictionForAngledPlaceHolding = 1f;			    //Friction setting for materials to hold angled objects in place
+		public static float ThrowForce = 500f;								//Force to throw key with
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 
-		public static float ThrowForce = 500f;								//Force to throw key with
 
 		public static Color Red = new Color32 (150, 34, 34, 100);			//RGB for Red Background
 		public static Color Blue = new Color32 (39, 64, 139, 100);			//RGB for Blue Background

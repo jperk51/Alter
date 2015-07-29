@@ -13,6 +13,6 @@ public class SquareRotHandler : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-		
+				rigidbody2D.angularVelocity = 30f;
 		}
 }

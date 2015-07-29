@@ -9,7 +9,9 @@ public class SpikesLevelOne : MonoBehaviour
 		PlatformerCharacter2D getStartingPos;
 
 		void OnCollisionEnter2D (Collision2D other)
-		{		
-				Application.LoadLevel (Application.loadedLevelName);
+		{
+				if (other.gameObject.tag == "Player" || other.gameObject.tag == "Key") {
+						Application.LoadLevel (Application.loadedLevelName);
+				}
 		}
 }
