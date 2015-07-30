@@ -20,6 +20,7 @@ public static class Utils
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
 		public static float FrictionForAngledPlaceHolding = 1f;			    //Friction setting for materials to hold angled objects in place
 		public static float ThrowForce = 500f;								//Force to throw key with
+		public static float SquareAngularVelocity = 20f;					//Speed at which the square spins
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 

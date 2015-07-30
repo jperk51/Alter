@@ -3,24 +3,12 @@
 public class PlatformerCharacter2D : MonoBehaviour
 {
 		bool facingRight = false;							// For determining which way the player is currently facing.
-		[SerializeField]
-		float
-				maxSpeed = 10f;				// The fastest the player can travel in the x axis.
-		[SerializeField]
-		float
-				jumpForce = 400f;			// Amount of force added when the player jumps.	
+		float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+		float jumpForce = 400f;			// Amount of force added when the player jumps.	
+		float crouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 
-		[Range(0, 1)]
-		[SerializeField]
-		float
-				crouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
-	
-		[SerializeField]
-		bool
-				airControl = false;			// Whether or not a player can steer while jumping;
-		[SerializeField]
-		LayerMask
-				whatIsGround;			// A mask determining what is ground to the character
+		bool airControl = true;			// Whether or not a player can steer while jumping;
+		LayerMask whatIsGround;			// A mask determining what is ground to the character
 
 	
 		Transform groundCheck;								// A position marking where to check if the player is grounded.
@@ -45,6 +33,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				anim = GetComponent<Animator> ();
 				GameObject gmHold = GameObject.Find ("GameManager");
 				physMan = gmHold.GetComponent<PhysicsManipulation> ();
+				whatIsGround = LayerMask.GetMask ("Ground");
 		}
 
 
