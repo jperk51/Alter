@@ -8,13 +8,13 @@ public static class Utils
 		public static int MaxStackCount = 1000;								//Max number of time snapshots
 		public static int DelayCounterTigger = 10;							//Delay for real death after tutorial on time reversal
 		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal
-
-		public static float AmountToSlidePerFrame = 0.018f;					//Amount for Energy Bar to slide per frame
+		public static int NumberOfFramesPerPercentEnergy = 5;				//Number of frames per energy change
+		
 		public static float GravityScale = 3f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one
 		public static float OneHundredFloat = 100f;							//Float 100
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
-		public static float DistaceToMove = 0.5f;							//Amount of total movement for key slide
+		public static float DistanceToMove = 0.5f;							//Amount of total movement for key slide
 		public static float AmountToMovePerFrame = 0.01f;					//Amount of slide per frame
 		public static float KeyShiftWhenCarried = 0.3f;						//Distance for keys position to be shifted when being carried
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key

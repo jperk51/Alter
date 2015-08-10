@@ -34,9 +34,9 @@ public class SlideAction : MonoBehaviour
 
 		void slideVert ()
 		{
-				if (Mathf.Abs (startingPos.y - gameObject.transform.position.y) >= Utils.DistaceToMove) {
+				if (startingPos.y - gameObject.transform.position.y >= Utils.DistanceToMove) {
 						direction = 1;
-				} else if (Mathf.Abs (startingPos.y - gameObject.transform.position.y) == 0) {
+				} else if (startingPos.y - gameObject.transform.position.y <= 0) {
 						direction = -1;
 				}
 				Vector2 currentPos = gameObject.transform.position;
@@ -45,9 +45,9 @@ public class SlideAction : MonoBehaviour
 
 		void slideHoriz ()
 		{
-				if (Mathf.Abs (startingPos.x - gameObject.transform.position.x) >= Utils.DistaceToMove) {
+				if (startingPos.x - gameObject.transform.position.x >= Utils.DistanceToMove) {
 						direction = 1;
-				} else if (Mathf.Abs (startingPos.x - gameObject.transform.position.x) == 0) {
+				} else if (startingPos.x - gameObject.transform.position.x <= 0) {
 						direction = -1;
 				}
 				Vector2 currentPos = gameObject.transform.position;
