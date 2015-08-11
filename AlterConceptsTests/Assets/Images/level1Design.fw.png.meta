@@ -20,7 +20,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -75,20 +75,20 @@ TextureImporter:
     - name: level1Design.fw_3
       rect:
         serializedVersion: 2
-        x: 379
-        y: 386
-        width: 19
-        height: 19
+        x: 371
+        y: 345
+        width: 23
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: level1Design.fw_4
       rect:
         serializedVersion: 2
-        x: 447
-        y: 335
-        width: 161
-        height: 80
+        x: 470
+        y: 325
+        width: 146
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,6 +99,16 @@ TextureImporter:
         y: 47
         width: 186
         height: 572
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level1Design.fw_6
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 248
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

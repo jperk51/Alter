@@ -51,7 +51,7 @@ public class KeyController : MonoBehaviour
 		{
 				//GameObject playerHold = GameObject.Find ("Player");
 				gameObject.transform.position = playerHold.transform.position;
-				PlatformerCharacter2D pC2D = playerHold.GetComponent<PlatformerCharacter2D> ();
+				PlatformerCharacter2DCube pC2D = playerHold.GetComponent<PlatformerCharacter2DCube> ();
 				if (pC2D.IsFacingRight ()) {
 						gameObject.transform.position = new Vector2 (gameObject.transform.position.x + Utils.KeyShiftWhenCarried, gameObject.transform.position.y);
 				} else {

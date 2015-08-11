@@ -40,7 +40,7 @@ public class EnergyBarHandler : MonoBehaviour
 		{
 				if (energyLevel < 100) {
 						energyLevel += 2;
-						Mathf.Clamp (energyLevel, 0, 100);
+						energyLevel = Mathf.Clamp (energyLevel, 0, 100);
 						gameObject.guiText.text = energyLevel + "%";
 				}
 		}
