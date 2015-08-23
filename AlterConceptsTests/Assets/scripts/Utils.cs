@@ -9,7 +9,7 @@ public static class Utils
 		public static int DelayCounterTigger = 10;							//Delay for real death after tutorial on time reversal
 		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal
 		public static int NumberOfFramesPerPercentEnergy = 5;				//Number of frames per energy change
-		
+			
 		public static float GravityScale = 3f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one
 		public static float OneHundredFloat = 100f;							//Float 100
@@ -21,6 +21,7 @@ public static class Utils
 		public static float FrictionForAngledPlaceHolding = 1f;			    //Friction setting for materials to hold angled objects in place
 		public static float ThrowForce = 500f;								//Force to throw key with
 		public static float SquareAngularVelocity = 20f;					//Speed at which the square spins
+		public static float AmountToMoveLaserPerFrame = 0.08f;				//Amount the end of laser with more to make the laser "swing"
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 

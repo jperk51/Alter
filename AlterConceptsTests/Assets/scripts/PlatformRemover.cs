@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlatformRemover : MonoBehaviour
 {
+		bool hasPlayerLandedYet = false;
 
 		// Use this for initialization
 		void Start ()
@@ -16,9 +17,16 @@ public class PlatformRemover : MonoBehaviour
 	
 		}
 
-		void OnCollisionExit2D (Collision2D other)
+		void OnCollisionEnter2D (Collision2D other)
 		{
 				if (other.transform.tag == "Player") {
+						hasPlayerLandedYet = true;
+				}
+		}
+
+		void OnCollisionExit2D (Collision2D other)
+		{
+				if (other.transform.tag == "Player" && hasPlayerLandedYet) {
 						Destroy (gameObject);
 				}
 		}
