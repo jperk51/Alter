@@ -22,6 +22,7 @@ public static class Utils
 		public static float ThrowForce = 500f;								//Force to throw key with
 		public static float SquareAngularVelocity = 20f;					//Speed at which the square spins
 		public static float AmountToMoveLaserPerFrame = 0.2f;				//Amount the end of laser with more to make the laser "swing"
+		public static float AmountToMoveGatePerFrame = 0.02f;				//Amount the goal blocker should slider per frame on tutorial level
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 

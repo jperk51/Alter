@@ -60,15 +60,19 @@ public class PhysicsManipulation : MonoBehaviour
 						if (Input.GetKeyDown (KeyCode.G)) {
 								reversedGravity = ! reversedGravity;
 								reversedTime = false;
+								TutorialControlsCheck ("Gravity");
 						} else if (Input.GetKeyDown (KeyCode.F)) {
 								noFriction = !noFriction;
 								reversedTime = false;
+								TutorialControlsCheck ("Friction");
 						} else if (Input.GetKeyDown (KeyCode.T)) {
 								reversedTime = true;
 								music.TurnOnBackwardClip ();
+								TutorialControlsCheck ("Time");
 						} else if (Input.GetKeyUp (KeyCode.T)) {
 								TurnTimeReversalOff ();
 						}
+						TutorialControlsCheck ("Alter");
 				} 
 		}
 
@@ -127,5 +131,13 @@ public class PhysicsManipulation : MonoBehaviour
 		{
 				reversedTime = false;
 				music.TurnOnForwardClip ();
+		}
+
+		private void TutorialControlsCheck (string physicsChanged)
+		{
+				if (Application.loadedLevelName == "TutorialLevel") {
+						ControlHandler controlHandler = GameObject.Find ("ControlChecks").GetComponent<ControlHandler> ();
+						controlHandler.ControlUsed (physicsChanged);
+				}
 		}
 }

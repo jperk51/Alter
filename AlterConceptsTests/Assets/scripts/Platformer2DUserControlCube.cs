@@ -21,8 +21,13 @@ public class Platformer2DUserControlCube : MonoBehaviour
 				#if CROSS_PLATFORM_INPUT
 		if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
 				#else
-				if (Input.GetButtonDown ("Jump"))
+				if (Input.GetButtonDown ("Jump")) {
 						jump = true;
+						if (Application.loadedLevelName == "TutorialLevel") {
+								ControlHandler controlHandler = GameObject.Find ("ControlChecks").GetComponent<ControlHandler> ();
+								controlHandler.ControlUsed ("Jump");
+						}
+				}
 				#endif
 				physMan.SetPhysics (this.gameObject);
 		

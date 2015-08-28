@@ -50,13 +50,19 @@ public class PlatformerCharacter2DCube : MonoBehaviour
 						// Move the character
 						rigidbody2D.velocity = new Vector2 (move * maxSpeed, rigidbody2D.velocity.y);
 			
-						// If the input is moving the player right and the player is facing left...
-						if (move < 0 && facingRight) {
-								// ... flip the player.
-								Flip ();
-						} else if (move > 0 && !facingRight) {
-								// ... flip the player.
-								Flip ();
+						// If the input is moving the player left and the player is facing right...
+						if (move < 0) {
+								TutorialControlsCheck ("MoveLeft");
+								if (facingRight) {
+										// ... flip the player.
+										Flip ();
+								}
+						} else if (move > 0) {
+								TutorialControlsCheck ("MoveRight");
+								if (!facingRight) {
+										// ... flip the player.
+										Flip ();
+								}
 						}
 			
 				}
@@ -103,6 +109,14 @@ public class PlatformerCharacter2DCube : MonoBehaviour
 		public bool IsFacingRight ()
 		{
 				return facingRight;
+		}
+
+		private void TutorialControlsCheck (string direction)
+		{
+				if (Application.loadedLevelName == "TutorialLevel") {
+						ControlHandler controlHandler = GameObject.Find ("ControlChecks").GetComponent<ControlHandler> ();
+						controlHandler.ControlUsed (direction);
+				}
 		}
 	
 }

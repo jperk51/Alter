@@ -32,5 +32,10 @@ public class ThrowAction : MonoBehaviour
 				float sin = Mathf.Sin (angle * Mathf.Deg2Rad);
 				Vector2 angledForce = new Vector2 (Utils.ThrowForce * cos, Utils.ThrowForce * sin);
 				gameObject.rigidbody2D.AddForce (angledForce);
+				
+				if (Application.loadedLevelName == "TutorialLevel") {
+						ControlHandler controlHandler = GameObject.Find ("ControlChecks").GetComponent<ControlHandler> ();
+						controlHandler.ControlUsed ("Throw");
+				}
 		}
 }
