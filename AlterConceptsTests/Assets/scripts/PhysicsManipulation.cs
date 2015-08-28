@@ -48,7 +48,7 @@ public class PhysicsManipulation : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				energyCounter = GameObject.Find ("EnergyCounter").GetComponent<EnergyBarHandler> ();
+				energyCounter = GameObject.Find ("Player").GetComponent<EnergyBarHandler> ();
 				if (Input.GetKeyDown (KeyCode.LeftAlt) || Input.GetKeyDown (KeyCode.RightAlt) || energyCounter.NoEnergyLeft ()) {
 						alterModeEnabled = !alterModeEnabled;
 						if (energyCounter.NoEnergyLeft () && reversedTime) {
