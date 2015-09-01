@@ -14,8 +14,11 @@ public class ControlHandler : MonoBehaviour
 		void Update ()
 		{
 				if (gameObject.transform.childCount == 0) {
-						TutorialGateHandler gateHandler = GameObject.Find ("GoalBlocker").GetComponent<TutorialGateHandler> ();
-						gateHandler.OpenGate ();
+						GameObject goalBlocker = GameObject.Find ("GoalBlocker");
+						if (goalBlocker != null) {
+								TutorialGateHandler gateHandler = goalBlocker.GetComponent<TutorialGateHandler> ();
+								gateHandler.OpenGate ();
+						}
 				}
 		}
 

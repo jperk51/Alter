@@ -9,8 +9,9 @@ public static class Utils
 		public static int DelayCounterTigger = 10;							//Delay for real death after tutorial on time reversal
 		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal
 		public static int NumberOfFramesPerPercentEnergy = 5;				//Number of frames per energy change
+		public static int NumberOfLevels = 3;								//Number of levels in the game (not including the tutorial level)
 			
-		public static float GravityScale = 3f;								//Scale for gravity (used mostly to control jump height)
+		public static float GravityScale = 2f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one
 		public static float OneHundredFloat = 100f;							//Float 100
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
@@ -20,9 +21,9 @@ public static class Utils
 		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
 		public static float FrictionForAngledPlaceHolding = 1f;			    //Friction setting for materials to hold angled objects in place
 		public static float ThrowForce = 500f;								//Force to throw key with
-		public static float SquareAngularVelocity = 20f;					//Speed at which the square spins
+		public static float SquareAngularVelocity = 10f;					//Speed at which the square spins
 		public static float AmountToMoveLaserPerFrame = 0.2f;				//Amount the end of laser with more to make the laser "swing"
-		public static float AmountToMoveGatePerFrame = 0.02f;				//Amount the goal blocker should slider per frame on tutorial level
+		public static float AmountToFadeGatePerFrame = 0.02f;				//Amount the goal blocker should fade per frame on tutorial level
 		public static float EnergyYOffset = -25f;							//Y Offset for enery text
 		public static float EnergyXOffset = -13f;							//X Offset for enery text
 		public static float EnergyYOffsetRG = 10f;							//Y Offset for enery text when gravity is reversed  

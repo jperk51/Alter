@@ -13,11 +13,16 @@ public class TutorialGateHandler : MonoBehaviour
 	
 		// Update is called once per frame
 		void Update ()
-		{
+		{  
 				if (openGate) {
-						Vector2 gatePos = gameObject.transform.position;
-						gameObject.transform.position = new Vector2 (gatePos.x, gatePos.y + Utils.AmountToMoveGatePerFrame);
+						Color colorHold = gameObject.renderer.material.color;
+						gameObject.renderer.material.color = new Color (colorHold.r, colorHold.g, colorHold.b, colorHold.a - Utils.AmountToFadeGatePerFrame);
+						
+						if (gameObject.renderer.material.color.a <= 0) {
+								Destroy (gameObject);
+						}
 				}
+				
 		}
 
 		public void OpenGate ()

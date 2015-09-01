@@ -12,7 +12,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		{
 				levelCompleteTexts = gameObject.GetComponentsInChildren<GUIText> ();
 				clear = levelCompleteTexts [0].color;
-				clear.a = 1f;
+				clear.a = 0f;
 				visible = levelCompleteTexts [0].color;
 				visible.a = 1f;
 				levelCompleteTexts [0].color = clear;
@@ -28,9 +28,9 @@ public class LevelCompleteHandler : MonoBehaviour
 						if (Input.GetKeyDown (KeyCode.R)) {
 								Application.LoadLevel (Application.loadedLevelName);
 						} else if (Input.GetKeyDown (KeyCode.C)) {
-								Application.LoadLevel (GetNextLevel (Application.loadedLevelName));
-						} else if (Input.GetKeyDown (KeyCode.Q)) {
-								Application.Quit ();
+								Application.LoadLevel (GetNextLevel (Application.loadedLevel));
+						} else if (Input.GetKeyDown (KeyCode.G)) {
+								Application.LoadLevel ("TutorialLevel");
 						}
 				}
 		}
@@ -44,16 +44,12 @@ public class LevelCompleteHandler : MonoBehaviour
 				levelComplete = true;
 		}
 
-		private string GetNextLevel (string currentLevel)
+		private int GetNextLevel (int currentLevel)
 		{
-				if (currentLevel.Contains ("Tutorial")) {
-						return "AlterPhysicsManipulationImplementation";
-				} else if (currentLevel.Contains ("Physics")) {
-						return "AlterLevelTwo";
-				} else if (currentLevel.Contains ("Two")) {
-						return "AlterLevelThree";
-				} 
-				
-				return "TutorialLevel";
+				if (currentLevel == Utils.NumberOfLevels) {
+						return 0;
+				} else {
+						return currentLevel + 1;
+				}
 		}
 }
