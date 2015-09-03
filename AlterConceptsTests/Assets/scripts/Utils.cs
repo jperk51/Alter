@@ -9,7 +9,7 @@ public static class Utils
 		public static int DelayCounterTigger = 10;							//Delay for real death after tutorial on time reversal
 		public static int AmountToFadeTotal = 50;							//Minimum opacity percent for goal
 		public static int NumberOfFramesPerPercentEnergy = 5;				//Number of frames per energy change
-		public static int NumberOfLevels = 3;								//Number of levels in the game (not including the tutorial level)
+		public static int NumberOfLevels = 4;								//Number of levels in the game (not including the tutorial level)
 			
 		public static float GravityScale = 2f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one

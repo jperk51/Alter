@@ -49,4 +49,16 @@ public class BackgroundMusicManager : MonoBehaviour
 				backward.Stop ();
 				forward.Play ();
 		}
+
+		public void Mute ()
+		{
+				sounds = GetComponents<AudioSource> ();
+				for (int i = 0; i < sounds.Length; i++) {
+						if (sounds [i].volume == 0) {
+								sounds [i].volume = 1f;
+						} else {
+								sounds [i].volume = 0f;
+						}
+				}
+		}
 }
