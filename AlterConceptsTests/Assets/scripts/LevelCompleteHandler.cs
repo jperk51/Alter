@@ -15,10 +15,9 @@ public class LevelCompleteHandler : MonoBehaviour
 				clear.a = 0f;
 				visible = levelCompleteTexts [0].color;
 				visible.a = 1f;
-				levelCompleteTexts [0].color = clear;
-				levelCompleteTexts [1].color = clear;
-				levelCompleteTexts [2].color = clear;
-				levelCompleteTexts [3].color = clear;
+				for (int i = 0; i < levelCompleteTexts.Length; i++) {
+						levelCompleteTexts [i].color = clear;
+				}
 		}
 	
 		// Update is called once per frame
@@ -30,17 +29,18 @@ public class LevelCompleteHandler : MonoBehaviour
 						} else if (Input.GetKeyDown (KeyCode.C)) {
 								Application.LoadLevel (GetNextLevel (Application.loadedLevel));
 						} else if (Input.GetKeyDown (KeyCode.G)) {
-								Application.LoadLevel ("TutorialLevel");
+								Application.LoadLevel (0);
+						} else if (Input.GetKeyDown (KeyCode.L)) {
+								Application.LoadLevel (Utils.NumberOfLevels);
 						}
 				}
 		}
 
 		public void LevelComplete ()
 		{
-				levelCompleteTexts [0].color = visible;
-				levelCompleteTexts [1].color = visible;
-				levelCompleteTexts [2].color = visible;
-				levelCompleteTexts [3].color = visible;
+				for (int i = 0; i < levelCompleteTexts.Length; i++) {
+						levelCompleteTexts [i].color = visible;
+				}
 				levelComplete = true;
 		}
 
