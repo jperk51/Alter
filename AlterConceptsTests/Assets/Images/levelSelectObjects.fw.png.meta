@@ -46,29 +46,29 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 338
+        y: 340
         width: 572
-        height: 49
+        height: 47
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: levelSelectObjects.fw_1
       rect:
         serializedVersion: 2
-        x: 183
-        y: 0
-        width: 199
-        height: 16
+        x: 207
+        y: 195
+        width: 150
+        height: 111
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: levelSelectObjects.fw_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 125
-        width: 150
-        height: 113
+        x: 33
+        y: 126
+        width: 151
+        height: 112
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -85,9 +85,9 @@ TextureImporter:
     - name: levelSelectObjects.fw_4
       rect:
         serializedVersion: 2
-        x: 207
-        y: 194
-        width: 151
+        x: 381
+        y: 125
+        width: 150
         height: 112
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -95,10 +95,10 @@ TextureImporter:
     - name: levelSelectObjects.fw_5
       rect:
         serializedVersion: 2
-        x: 381
-        y: 125
-        width: 150
-        height: 113
+        x: 161
+        y: 0
+        width: 221
+        height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
