@@ -13,7 +13,7 @@ public class BackgroundMusicManager : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				//DontDestroyOnLoad (gameObject);
+
 		}
 	
 		// Update is called once per frame
@@ -50,15 +50,24 @@ public class BackgroundMusicManager : MonoBehaviour
 				forward.Play ();
 		}
 
+		public void Toggle ()
+		{
+				sounds = GetComponents<AudioSource> ();
+				for (int i = 0; i < sounds.Length; i++) {
+						if (sounds [i].volume != 0) {
+								sounds [i].volume = 0;
+						} else {
+								sounds [i].volume = 1;
+						}
+				}
+		}
+
 		public void Mute ()
 		{
 				sounds = GetComponents<AudioSource> ();
 				for (int i = 0; i < sounds.Length; i++) {
-						if (sounds [i].isPlaying) {
-								sounds [i].Pause ();
-						} else {
-								sounds [i].Play ();
-						}
+						sounds [i].volume = 0;
+						
 				}
 		}
 }
