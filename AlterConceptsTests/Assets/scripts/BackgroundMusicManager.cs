@@ -54,10 +54,10 @@ public class BackgroundMusicManager : MonoBehaviour
 		{
 				sounds = GetComponents<AudioSource> ();
 				for (int i = 0; i < sounds.Length; i++) {
-						if (sounds [i].volume == 0) {
-								sounds [i].volume = 1f;
+						if (sounds [i].isPlaying) {
+								sounds [i].Pause ();
 						} else {
-								sounds [i].volume = 0f;
+								sounds [i].Play ();
 						}
 				}
 		}

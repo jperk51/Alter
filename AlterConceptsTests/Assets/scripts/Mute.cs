@@ -13,7 +13,7 @@ public class Mute : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (Input.GetKeyDown (KeyCode.M)) {
+				if (Input.GetKeyDown (KeyCode.P)) {
 						GameObject musicHolder = GameObject.Find ("MusicHolder");
 						BackgroundMusicManager bgMM = musicHolder.GetComponent<BackgroundMusicManager> ();
 						bgMM.Mute ();
