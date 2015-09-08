@@ -8,10 +8,13 @@ public class LaserHandler : MonoBehaviour
 		public float distanceForEndToTravelHoriz = 3.0f;
 		float direction = 1.0f;
 		Vector2 endOfLaser;
+		LineRenderer laser;
 		// Use this for initialization
 		void Start ()
 		{
-				
+				laser = gameObject.GetComponent<LineRenderer> ();
+				laser.SetPosition (0, gameObject.transform.position);
+				laser.SetWidth (0.05f, 0.05f);
 		}
 	
 		// Update is called once per frame
@@ -28,7 +31,7 @@ public class LaserHandler : MonoBehaviour
 				endOfLaser = new Vector2 (firingPosition.x + swingShiftForLaser, firingPosition.y - maxLengthOfLaser);
 				objectHitByLaser = Physics2D.Linecast (startOfLaser, endOfLaser);
 				endOfLaser = objectHitByLaser.point;
-				Debug.DrawLine (firingPosition, endOfLaser, Color.red);
+				laser.SetPosition (1, endOfLaser);
 				ReactToCollision (objectHitByLaser.transform.tag);
 				swingShiftForLaser += Utils.AmountToMoveLaserPerFrame * direction;
 				direction = FlipDirectionIfLaserHasHitHorizLimit (startOfLaser.x, endOfLaser.x, direction);
@@ -52,21 +55,5 @@ public class LaserHandler : MonoBehaviour
 						Application.LoadLevel (Application.loadedLevelName);
 				}
 		}
-
-		void OnPostRender ()
-		{
-				if (!gameObject.GetComponent<SpriteRenderer> ().material) {
-						Debug.LogError ("Please Assign a material on the inspector");
-						return;
-				}
-				gameObject.GetComponent<SpriteRenderer> ().material.SetPass (0);
-				GL.PushMatrix ();
-				GL.LoadOrtho ();
-				GL.Begin (GL.LINES);
-				GL.Color (Color.red);
-				GL.Vertex (gameObject.transform.position);
-				GL.Vertex (endOfLaser);
-				GL.End ();
-				GL.PopMatrix ();
-		}
+	
 }
