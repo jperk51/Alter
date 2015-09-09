@@ -4,7 +4,7 @@ public class PlatformerCharacter2DCube : MonoBehaviour
 {
 		bool facingRight = false;							// For determining which way the player is currently facing.
 		float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-		float jumpForce = 400f;			// Amount of force added when the player jumps.	
+		float jumpForce = 300f;			// Amount of force added when the player jumps.	
 		float crouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	
 		bool airControl = true;			// Whether or not a player can steer while jumping;

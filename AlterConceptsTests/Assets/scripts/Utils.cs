@@ -11,7 +11,7 @@ public static class Utils
 		public static int NumberOfFramesPerPercentEnergy = 5;				//Number of frames per energy change
 		public static int NumberOfLevels = 4;								//Number of levels in the game (not including the tutorial level)
 			
-		public static float GravityScale = 2f;								//Scale for gravity (used mostly to control jump height)
+		public static float GravityScale = 1f;								//Scale for gravity (used mostly to control jump height)
 		public static float NegativeOneFloat = -1f;							//Float negative one
 		public static float OneHundredFloat = 100f;							//Float 100
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
