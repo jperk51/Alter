@@ -17,10 +17,10 @@ public static class Utils
 		public static float AmountToFadePerFrame = 0.5f;					//Amount for goal to fade per frame
 		public static float DistanceToMove = 0.5f;							//Amount of total movement for key slide
 		public static float AmountToMovePerFrame = 0.01f;					//Amount of slide per frame
-		public static float KeyShiftWhenCarried = 0.3f;						//Distance for keys position to be shifted when being carried
-		public static float KeyGravityShift = 0.4f;							//Amount to shift the gravity scale for the key
+		public static float KeyShiftWhenCarried = 0.35f;					//Distance for keys position to be shifted when being carried
+		public static float KeyGravityShift = 1f;							//Amount to shift the gravity scale for the key
 		public static float FrictionForAngledPlaceHolding = 1f;			    //Friction setting for materials to hold angled objects in place
-		public static float ThrowForce = 500f;								//Force to throw key with
+		public static float ThrowForce = 450f;								//Force to throw key with
 		public static float SquareAngularVelocity = 10f;					//Speed at which the square spins
 		public static float AmountToMoveLaserPerFrame = 0.2f;				//Amount the end of laser with more to make the laser "swing"
 		public static float AmountToFadeGatePerFrame = 0.02f;				//Amount the goal blocker should fade per frame on tutorial level
