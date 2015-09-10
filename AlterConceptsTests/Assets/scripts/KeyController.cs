@@ -20,9 +20,12 @@ public class KeyController : MonoBehaviour
 		void Update ()
 		{
 				if (followPlayer) {
-						Destroy (gameObject.GetComponent<FadeAction> ());
 						FollowPlayer ();
+				} else if (!followPlayer && !gameObject.collider2D.enabled) {
+			
+						gameObject.collider2D.enabled = true;
 				}
+
 
 				physMan.SetPhysics (gameObject);
 
@@ -49,7 +52,6 @@ public class KeyController : MonoBehaviour
 
 		void FollowPlayer ()
 		{
-				//GameObject playerHold = GameObject.Find ("Player");
 				gameObject.transform.position = playerHold.transform.position;
 				PlatformerCharacter2DCube pC2D = playerHold.GetComponent<PlatformerCharacter2DCube> ();
 				if (pC2D.IsFacingRight ()) {
@@ -64,7 +66,6 @@ public class KeyController : MonoBehaviour
 		public void ThrowKey ()
 		{
 				followPlayer = false;
-				gameObject.collider2D.enabled = true;
 		}
 
 		public bool PlayerHasKey ()
