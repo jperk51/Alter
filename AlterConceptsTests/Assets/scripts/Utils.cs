@@ -24,9 +24,9 @@ public static class Utils
 		public static float SquareAngularVelocity = 10f;					//Speed at which the square spins
 		public static float AmountToMoveLaserPerFrame = 0.2f;				//Amount the end of laser with more to make the laser "swing"
 		public static float AmountToFadeGatePerFrame = 0.02f;				//Amount the goal blocker should fade per frame on tutorial level
-		public static float EnergyYOffset = -25f;							//Y Offset for enery text
+		public static float EnergyYOffset = -30f;							//Y Offset for enery text
 		public static float EnergyXOffset = -13f;							//X Offset for enery text
-		public static float EnergyYOffsetRG = 10f;							//Y Offset for enery text when gravity is reversed  
+		public static float EnergyYOffsetRG = 15f;							//Y Offset for enery text when gravity is reversed  
 
 		public static Vector2 ZeroVelocity = new Vector2 (0f, 0f);			//Zero Velocity
 
