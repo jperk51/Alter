@@ -46,19 +46,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 20
-        y: 194
-        width: 226
-        height: 96
+        y: 196
+        width: 225
+        height: 94
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: additionalText.fw_1
       rect:
         serializedVersion: 2
-        x: 110
-        y: 15
-        width: 185
-        height: 137
+        x: 122
+        y: 21
+        width: 171
+        height: 131
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
